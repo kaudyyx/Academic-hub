@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AcademicHub</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f0d8;
+        }
+        .header {
+            background-color: #c5b500;
+            display: flex;
+            align-items: center;
+            padding: 10px;
+            justify-content: space-between;
+        }
+        .header .icons img {
+            width: 24px;
+            margin: 0 10px;
+            cursor: pointer;
+        }
+        .search-bar {
+            flex-grow: 1;
+            margin: 0 20px;
+        }
+        .search-bar input {
+            width: 100%;
+            padding: 5px;
+        }
+        .sidebar {
+            width: 200px;
+            background: #e0e0c0;
+            padding: 15px;
+            position: fixed;
+            height: 100%;
+        }
+        .content {
+            margin-left: 220px;
+            padding: 20px;
+        }
+        .post {
+            background: white;
+            padding: 10px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            position: relative; 
+        }
+        .post-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .post-header h3 {
+            margin: 0;
+        }
+        .post-content {
+            margin: 10px 0;
+        }
+        .post-actions {
+            display: flex;
+            justify-content: space-between;
+        }
+        .post-actions input {
+            flex-grow: 1;
+            padding: 5px;
+            margin-right: 10px;
+        }
+        button {
+            background: #1877f2;
+            color: white;
+            padding: 5px 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background: #125ec5;
+        }
+        .delete-button {
+            background: none;
+            color: black;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+            padding: 0;
+            margin-left: 10px;
+        }
+        .delete-warning {
+            color: red;
+            display: none; /* Fica escondido */
+            font-size: 12px;
+            position: absolute; /* Para o botão flutuar */
+            top: -30px; /* Arruma a posição */
+            right: 0; /* Alinha */
+            background: white; /* Fundo branco */
+            border: 1px solid red; /* Borda vermelha */
+            padding: 5px;
+            border-radius: 5px;
+            z-index: 10; 
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="logo">AcademicHub</div>
+        <div class="icons">
+            <img src="home.png" alt="Home" onclick="window.location.href='inicio.html'"> <!-- Redireciona para a tela inicial -->
+            <img src="escola.png" alt="Escola">
+        </div>
+        <div class="search-bar">
+            <input type="text" id="searchInput" placeholder="Pesquisar..." oninput="searchPosts()">
+        </div>
+        <div class="icons">
+            <img src="chat.png" alt="Chat">
+            <img src="sino.png" alt="Notificações">
+            <img src="perfil.png" alt="Perfil" onclick="window.location.href='perfil.html'"> <!-- Redireciona para o perfil -->
+        </div>
+    </div>
+    <div class="sidebar">
+        <h3>Categorias</h3>
+        <ul>
+            <li>Geografia</li>
+            <li>Química</li>
+            <li>História</li>
+            <li>Português</li>
+            <li>Matemática</li>
+            <li>Programação</li>
+        </ul>
+    </div>
+    <div class="content">
+        <div id="postForm">
+            <textarea id="postContent" placeholder="O que você está pensando?" rows="4" style="width: 100%;"></textarea>
+            <button onclick="createPost()">Postar</button>
+        </div>
+        <div id="postsContainer"></div>
+    </div>
+
+    <script>
+        let userId = localStorage.getItem('userId'); // Recupera o ID do usuário logado
+        let userName = localStorage.getItem('userName'); // Recupera o nome do usuário logado
+
+        async function createPost() {
+            const content = document.getElementById('postContent').value;
+
+            if (!content) {
+                alert("Por favor, insira um texto.");
+                return;
+            }
+
+            const postData = {
+                autor: userId,
+                conteudo: content
+            };
+
+            console.log('Criando post com autor:', postData.autor); // Adicione este log
+
+            try {
+                const response = await fetch('http://localhost:3000/posts', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(postData)
+                });
+                const data = await response.json();
+                if (data.success) {
+                    renderPosts();
+                } else {
+                    alert(data.message);
+                }
+            } catch (error) {
+                alert('Erro ao criar post: ' + error.message);
+            }
+        }
+
+        //  renderiza os posts
+        async function renderPosts() {
+            const postsContainer = document.getElementById('postsContainer');
+            postsContainer.innerHTML = '';
+
+            try {
+                const response = await fetch('http://localhost:3000/posts');
+                const data = await response.json();
+                if (data.success) {
+                    data.posts.forEach(post => {
+                        const postCard = document.createElement('div');
+                        postCard.className = 'post';
+
+                        postCard.innerHTML = `
+                            <div class="post-header">
+                                <h3>${post.autor ? post.autor.nome : 'Autor desconhecido'}</h3>
+                                <div>
+                                    <button onclick="showDeleteWarning('${post._id}')" class="delete-button">...</button>
+                                    <button onclick="likePost('${post._id}')">Curtir (${post.curtidas})</button>
+                                </div>
+                            </div>
+                            <div class="post-content">
+                                <p>${post.conteudo}</p>
+                            </div>
+                            <div class="post-actions">
+                                <input type="text" placeholder="Comentar..." id="commentInput${post._id}">
+                                <button onclick="addComment('${post._id}')">Comentar</button>
+                            </div>
+                            <div id="comments${post._id}">
+                                ${post.comentarios.map(comment => `<p><strong>${comment.usuario ? comment.usuario.nome : 'Usuário desconhecido'}:</strong> ${comment.texto}</p>`).join('')}
+                            </div>
+                            <div id="deleteWarning${post._id}" class="delete-warning">
+                                Tem certeza que deseja deletar este post? 
+                                <button onclick="deletePost('${post._id}')">Sim</button>
+                                <button onclick="hideDeleteWarning('${post._id}')">Não</button>
+                            </div>
+                        `;
+
+                        postsContainer.appendChild(postCard);
+                    });
+                }
+            } catch (error) {
+                alert('Erro ao buscar posts: ' + error.message);
+            }
+        }
+
+       
+        function showDeleteWarning(postId) {
+            document.getElementById(`deleteWarning${postId}`).style.display = 'block';
+        }
+
+        
+        function hideDeleteWarning(postId) {
+            document.getElementById(`deleteWarning${postId}`).style.display = 'none';
+        }
+
+        // Deleta um post
+        async function deletePost(postId) {
+            if (confirm("Tem certeza que deseja deletar este post?")) {
+                try {
+                    const response = await fetch(`http://localhost:3000/posts/${postId}`, {
+                        method: 'DELETE'
+                    });
+                    const data = await response.json();
+                    if (data.success) {
+                        renderPosts();
+                    } else {
+                        alert(data.message);
+                    }
+                } catch (error) {
+                    alert('Erro ao deletar post: ' + error.message);
+                }
+            }
+        }
+
+        // Curtir um post/ obs: ainda nao consegui fazer funcionar
+        async function likePost(postId) {
+            try {
+                const response = await fetch(`http://localhost:3000/posts/${postId}/curtir`, {
+                    method: 'POST'
+                });
+                const data = await response.json();
+                if (data.success) {
+                    renderPosts();
+                } else {
+                    alert(data.message);
+                }
+            } catch (error) {
+                alert('Erro ao curtir post: ' + error.message);
+            }
+        }
+
+        // adiciona um comentário/ obs: ainda nao consegui fazer funcionar
+        async function addComment(postId) {
+            const commentInput = document.getElementById(`commentInput${postId}`);
+            const commentText = commentInput.value;
+
+            if (!commentText) {
+                alert("Por favor, insira um comentário.");
+                return;
+            }
+
+            const commentData = {
+                usuario: userId, // ID do usuário logado
+                texto: commentText
+            };
+
+            try {
+                const response = await fetch(`http://localhost:3000/posts/${postId}/comentarios`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(commentData)
+                });
+                const data = await response.json();
+                if (data.success) {
+                    commentInput.value = '';
+                    renderPosts();
+                } else {
+                    alert(data.message);
+                }
+            } catch (error) {
+                alert('Erro ao adicionar comentário: ' + error.message);
+            }
+        }
+
+        // pesquisar posts
+        function searchPosts() {
+            const searchTerm = document.getElementById('searchInput').value.toLowerCase();
+            const filteredPosts = posts.filter(post => post.content.toLowerCase().includes(searchTerm));
+            renderFilteredPosts(filteredPosts);
+        }
+
+        // Renderiza posts filtrados
+        function renderFilteredPosts(filteredPosts) {
+            const postsContainer = document.getElementById('postsContainer');
+            postsContainer.innerHTML = '';
+
+            filteredPosts.forEach(post => {
+                const postCard = document.createElement('div');
+                postCard.className = 'post';
+
+                postCard.innerHTML = `
+                    <div class="post-header">
+                        <h3>${post.autor ? post.autor.nome : 'Autor desconhecido'}</h3>
+                        <div>
+                            <button onclick="showDeleteWarning('${post._id}')" class="delete-button">...</button>
+                            <button onclick="likePost('${post._id}')">Curtir (${post.curtidas})</button>
+                        </div>
+                    </div>
+                    <div class="post-content">
+                        <p>${post.conteudo}</p>
+                    </div>
+                    <div class="post-actions">
+                        <input type="text" placeholder="Comentar..." id="commentInput${post._id}">
+                        <button onclick="addComment('${post._id}')">Comentar</button>
+                    </div>
+                    <div id="comments${post._id}">
+                        ${post.comentarios.map(comment => `<p><strong>${comment.usuario ? comment.usuario.nome : 'Usuário desconhecido'}:</strong> ${comment.texto}</p>`).join('')}
+                    </div>
+                    <div id="deleteWarning${post._id}" class="delete-warning">
+                        Tem certeza que deseja deletar este post? 
+                        <button onclick="deletePost('${post._id}')">Sim</button>
+                        <button onclick="hideDeleteWarning('${post._id}')">Não</button>
+                    </div>
+                `;
+
+                postsContainer.appendChild(postCard);
+            });
+        }
+
+        // Renderiza os posts 
+        window.onload = renderPosts;
+    </script>
+</body>
+</html>
