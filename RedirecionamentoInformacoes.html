@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="description" content="Site da escola">
+  <title>Colégio Cívico Militar Yvone Pimentel</title>
+  <style>
+     body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      background-color: #f5f5f5;
+    }
+
+    header {
+        background: linear-gradient(to right, rgb(138, 15, 220), rgb(198, 212, 42));
+            display: flex;
+            align-items: center;
+            padding: 10px;
+            justify-content: space-between;
+    }
+
+    header .icons img {
+            width: 24px;
+            margin: 0 10px;
+            cursor: pointer;
+        }
+        .search-bar {
+            flex-grow: 1;
+            margin: 0 20px;
+        }
+        .search-bar input {
+            width: 100%;
+            padding: 5px;
+        }
+
+/* Código da Parte Principal da Página */
+    .centered {
+      text-align: center;
+      padding: 50px;
+      padding-bottom: 20px;
+    }
+
+    .centered h1 {
+      font-size: 40px;
+     
+    }
+
+    .section {
+      width: 800px;
+      background-color: white;
+      margin: 20px auto;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 0 15px rgba(0,0,0,0.1);
+    }
+
+    h2 {
+      text-align: center;
+      color: #333;
+    }
+
+
+    .contact-links {
+      text-align: center;
+    }
+
+    .contact-links a {
+      display: block;
+      margin: 5px;
+      color: #131010;
+      text-decoration: none;
+    }
+
+    .contact-links a:hover {
+      text-decoration: underline;
+      color: blueviolet;
+    }
+
+  </style>
+</head>
+
+<body>
+
+<header>
+        <div class="logo">AcademicHub</div>
+        <div class="icons">
+            <img src="home.png" alt="Home" onclick="window.location.href='inicio.html'"> <!-- Redireciona para a tela inicial -->
+            <img src="escola.png" alt="Escola">
+        </div>
+        <div class="search-bar">
+            <input type="text" class="Pesquisar" id="searchInput" placeholder="Pesquisar..." oninput="searchPosts()">
+        </div>
+        <div class="icons">
+            <img src="chat.png" alt="Chat">
+            <img src="sino.png" alt="Notificações">
+            <img src="perfil.png" alt="Perfil" onclick="window.location.href='perfil.html'"> <!-- Redireciona para o perfil -->
+        </div>
+
+  </header>
+
+
+  <!-- Parte 1: Boas-vindas -->
+  <div class="centered">
+    <h1>Bem-vindo ao Site da Escola</h1>
+    <p>Aqui você pode se cadastrar, acessar o login, entrar em contato conosco e muito mais.</p>
+  </div>
+
+  <!-- Parte 2: Contato -->
+  <div class="section">
+    <h2>Fale Conosco</h2>
+    <p>Se você precisar de mais informações, entre em contato conosco:</p>
+
+    <div class="contact-links">
+      <a href="mailto:colegioestadualcivicomilitaryvonepimentel@email.com">
+        colegioestadualcivicomilitaryvonepimentel@email.com
+      </a>
+      <a href="tel:+5511999998888">(11) 99999-8888</a>
+    </div>
+  </div>
+
+  <!-- Parte 3: Informações adicionais -->
+  <div class="section">
+    <h2>Informações Sobre a Escola</h2>
+    <p>O Colégio Cívico Militar Yvone Pimentel foi fundado em 1969. Antigamente era uma casa de reeducação para meninas infratoras. Atualmente é dirigido por Mayra e Cidinha.</p>
+  </div>
+
+  <div class="section">
+    <h2>Profissionais Pedagógicos</h2>
+    <p>Contamos com pedagogos, monitores, faxineiros, militares e professores de ótima qualidade.</p>
+  </div>
+
+  <div class="section">
+    <h2>Ensinos Oferecidos</h2>
+    <ul>
+      <li>Ensino Fundamental</li>
+      <li>Ensino Médio Regular e Técnico</li>
+    </ul>
+  </div>
+
+  <div class="section">
+    <h2>Estrutura</h2>
+    <p>Excelente estrutura com ótima qualidade.</p>
+  </div>
+
+</body>
+</html>
+
