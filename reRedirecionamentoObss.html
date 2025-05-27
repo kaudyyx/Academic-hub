@@ -1,64 +1,21 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="description" content="Site da escola">
-  <title>Colégio Cívico Militar Yvone Pimentel</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
      <link href="https://fonts.googleapis.com/css2?family=Jaro:opsz@6..72&display=swap" rel="stylesheet">
-  <style>
-     
-/* Código da Parte Principal da Página */
-    .centered {
-      text-align: center;
-      padding: 50px;
-      padding-bottom: 20px;
-    }
-
-    .centered h1 {
-      font-size: 40px;
-     
-    }
-
-    .section {
-      width: 800px;
-      background-color: white;
-      margin: 20px auto;
-      padding: 30px;
-      border-radius: 10px;
-      box-shadow: 0 0 15px rgba(0,0,0,0.1);
-    }
-
-    h2 {
-      text-align: center;
-      color: #333;
-    }
+      <style>
 
 
-    .contact-links {
-      text-align: center;
-    }
-
-    .contact-links a {
-      display: block;
-      margin: 5px;
-      color: #131010;
-      text-decoration: none;
-    }
-
-    .contact-links a:hover {
-      text-decoration: underline;
-      color: blueviolet;
-    }
-
-
-      body {
+   body {
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
             background-color: #ffffff;
         }
-         header {
+           header {
             background: linear-gradient(to right, #8a0fdc, #c6d42a);
             display: flex;
             align-items: center;
@@ -88,6 +45,7 @@
             width: 80%;
             padding: 5px;
         }
+
         
         .sidebar {
             width: 200px;
@@ -159,7 +117,65 @@
   display: block;
 }
 
-.logo{
+
+    .imagem {
+      width: 250px;
+      height: 250px;
+      margin-left: 50px;
+     
+    }
+
+    .imagem img {
+      width: 300px;
+      height: 300px;
+      object-fit: cover;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    }
+
+    .retangulo {
+      background-color: white;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      width: 700px;
+      height: 240px;
+      margin-left: 50px;
+      
+     
+    }
+
+    .retangulo h2 {
+      margin-top: 0;
+      color: #333;
+    }
+
+    .retangulo ul {
+      padding-left: 20px;
+      margin-top: 10px;
+    }
+
+    .retangulo li {
+      margin-bottom: 6px;
+    }
+
+    .container{
+    
+  display: flex;
+  align-items: flex-start;
+  margin-left: 60px;
+  margin-top: 40px;
+  gap: 40px;
+
+
+    }
+
+    .tituloPrincipal{
+        margin-left: 110px;
+        margin-top: 50px;
+    }
+
+    .logo{
 
       font-family: 'Jaro', sans-serif;
       font-size: 40px;
@@ -167,27 +183,10 @@
 
 }
 
-.suporte{
-  background-color: #520a81;
-  width: 200px;
-  height: 60px;
-  color: white;
-  border-radius: 30px;
-  margin-bottom: 30px;
-  cursor: pointer;
-}
-
-.suporte2{
-  margin-top: 150px;
-  font-size: 50px;
-}
-
-  </style>
-</head>
+    </style>
 
 <body>
-
- <header>
+    <header>
          <div class="logo">AcademicHub</div>
         <div class="icons">
             <i class="fas fa-home" alt="Home" onclick="window.location.href='paginaInicial.html'"></i>  <!-- Redireciona para a tela inicial -->
@@ -213,7 +212,7 @@
 
 <!-- Menu lateral com nova classe -->
 <div class="menu-lateral" id="menuLateral">
-     <a href="javascript:void(0)" onclick="closeMenuLateral()">&times; Fechar</a>
+      <a href="javascript:void(0)" onclick="closeMenuLateral()">&times; Fechar</a>
   <a href="./RedirecionamentoInformacoes.html">Informações</a>
    <a href="noticias.html">Notícias</a>
    <a href="desabafoAnonimo.html">Desabafo Anônimo</a>
@@ -227,54 +226,23 @@
 
 
     </header>
-    
-  <!-- Parte 1: Boas-vindas -->
-  <div class="centered">
-    <h1>Bem-vindo ao Site da Escola</h1>
-    <p>Aqui você pode se cadastrar, acessar o login, entrar em contato conosco e muito mais.</p>
+    <h1 class="tituloPrincipal">Observações</h1>
+<div class="container">
+<div class="imagem">
+    <img src="./Imagens/imagemdeperfil2.jpg" alt="Imagem do Aluno">
   </div>
 
-  <!-- Parte 2: Contato -->
-  <div class="section">
-    <h2>Fale Conosco</h2>
-    <p>Se você precisar de mais informações, entre em contato conosco:</p>
-
-    <div class="contact-links">
-      <a href="mailto:colegioestadualcivicomilitaryvonepimentel@email.com">
-        colegioestadualcivicomilitaryvonepimentel@email.com
-      </a>
-      <a href="tel:+5511999998888">(11) 99999-8888</a>
-    </div>
-  </div>
-
-  <!-- Parte 3: Informações adicionais -->
-  <div class="section">
-    <h2>Informações Sobre a Escola</h2>
-    <p>O Colégio Cívico Militar Yvone Pimentel foi fundado em 1969. Antigamente era uma casa de reeducação para meninas infratoras. Atualmente é dirigido por Mayra e Cidinha.</p>
-  </div>
-
-  <div class="section">
-    <h2>Profissionais Pedagógicos</h2>
-    <p>Contamos com pedagogos, monitores, faxineiros, militares e professores de ótima qualidade.</p>
-  </div>
-
-  <div class="section">
-    <h2>Ensinos Oferecidos</h2>
+  <div class="retangulo">
+    <h2>Nome do Aluno</h2>
     <ul>
-      <li>Ensino Fundamental</li>
-      <li>Ensino Médio Regular e Técnico</li>
+      <li>Aqui inserir deficiencias ou transtornos que alguns alunos possam possuir</li>
+      <li>Também adicionar se possui algum professor de apoio e o nome</li>
+      <li>Alguma nota específica ou recomendação de como respeitar o seu tempo e limites.</li>
     </ul>
   </div>
-
-  <div class="section">
-    <h2>Estrutura</h2>
-    <p>Excelente estrutura com ótima qualidade.</p>
   </div>
 
-  <center><b><p class="suporte2">Continua perdido?</p></b>
-  <a href="suporte.html"><button class="suporte">OBTENHA SUPORTE</button></a></center>
-
-   <script>
+     <script>
 
     //Código do Menu lateral
   function openMenuLateral() {
@@ -288,6 +256,7 @@
   }
 </script>
 
-</body>
-</html>
+   </body>
 
+  
+  </html>

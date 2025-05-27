@@ -1,64 +1,19 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-br">
 <head>
-  <meta charset="UTF-8">
-  <meta name="description" content="Site da escola">
-  <title>Colégio Cívico Militar Yvone Pimentel</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Regras da Comunidade</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
      <link href="https://fonts.googleapis.com/css2?family=Jaro:opsz@6..72&display=swap" rel="stylesheet">
-  <style>
-     
-/* Código da Parte Principal da Página */
-    .centered {
-      text-align: center;
-      padding: 50px;
-      padding-bottom: 20px;
+</head>
+<style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: #fefcf8;
     }
-
-    .centered h1 {
-      font-size: 40px;
-     
-    }
-
-    .section {
-      width: 800px;
-      background-color: white;
-      margin: 20px auto;
-      padding: 30px;
-      border-radius: 10px;
-      box-shadow: 0 0 15px rgba(0,0,0,0.1);
-    }
-
-    h2 {
-      text-align: center;
-      color: #333;
-    }
-
-
-    .contact-links {
-      text-align: center;
-    }
-
-    .contact-links a {
-      display: block;
-      margin: 5px;
-      color: #131010;
-      text-decoration: none;
-    }
-
-    .contact-links a:hover {
-      text-decoration: underline;
-      color: blueviolet;
-    }
-
-
-      body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #ffffff;
-        }
-         header {
+ header {
             background: linear-gradient(to right, #8a0fdc, #c6d42a);
             display: flex;
             align-items: center;
@@ -88,19 +43,11 @@
             width: 80%;
             padding: 5px;
         }
-        
-        .sidebar {
-            width: 200px;
-            background: #e4e0e0;
-            padding: 15px;
-            position: fixed;
-            height: 100%;
-        }
 
-          /* Botão hambúrguer no canto direito */
+   /* Botão hambúrguer no canto direito */
 .hamburger-btn {
   position: absolute;
-  top: 17px;
+  top: 20px;
   right: 40px;
   z-index: 1001;
   background: none;
@@ -159,7 +106,57 @@
   display: block;
 }
 
-.logo{
+
+
+    .menu {
+      font-size: 2em;
+      cursor: pointer;
+    }
+
+    main {
+      text-align: center;
+      padding: 40px 20px;
+    }
+
+    h1 {
+      font-size: 3em;
+      font-family: 'Arial Black', sans-serif;
+      margin-bottom: 50px;
+      padding: 10px;
+    }
+
+    .button-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 15px;
+      max-width: 700px;
+      margin: 0 auto;
+    }
+
+    .button-grid button {
+        background-color: #4ea5ff;
+        color: black;
+        font-weight: bold;
+        padding: 15px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 1em;
+        transition: background 0.3s, transform 0.3s;
+}
+
+    .button-grid button:hover {
+        background-color: #3391ff;
+        transform: scale(1.05); 
+}
+
+    @media (max-width: 600px) {
+      .button-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .logo{
 
       font-family: 'Jaro', sans-serif;
       font-size: 40px;
@@ -167,28 +164,10 @@
 
 }
 
-.suporte{
-  background-color: #520a81;
-  width: 200px;
-  height: 60px;
-  color: white;
-  border-radius: 30px;
-  margin-bottom: 30px;
-  cursor: pointer;
-}
-
-.suporte2{
-  margin-top: 150px;
-  font-size: 50px;
-}
-
-  </style>
-</head>
-
+</style>
 <body>
-
- <header>
-         <div class="logo">AcademicHub</div>
+     <header>
+        <div class="logo">AcademicHub</div>
         <div class="icons">
             <i class="fas fa-home" alt="Home" onclick="window.location.href='paginaInicial.html'"></i>  <!-- Redireciona para a tela inicial -->
             <i class="fas fa-school" alt="Escola"></i>
@@ -202,7 +181,6 @@
             <i class="fas fa-user" alt="Perfil" onclick="window.location.href='perfil.html'"></i> <!-- Redireciona para o perfil -->
         
         </div>
-
 
        <!-- Botão hambúrguer -->
 <button class="hamburger-btn" onclick="openMenuLateral()">
@@ -226,57 +204,39 @@
 <div class="overlay" id="overlay" onclick="closeMenuLateral()"></div>
 
 
+
     </header>
+
+
+  <main>
+    <h1>REGRAS DA <br> COMUNIDADE</h1>
     
-  <!-- Parte 1: Boas-vindas -->
-  <div class="centered">
-    <h1>Bem-vindo ao Site da Escola</h1>
-    <p>Aqui você pode se cadastrar, acessar o login, entrar em contato conosco e muito mais.</p>
-  </div>
 
-  <!-- Parte 2: Contato -->
-  <div class="section">
-    <h2>Fale Conosco</h2>
-    <p>Se você precisar de mais informações, entre em contato conosco:</p>
+  <div class="button-grid">
+  <button>Respeite todos os membros</button>
+  <button>Evite linguagem ofensiva</button>
+  <button>Não publique fake news</button>
+  <button>Proibido bullying ou discriminação</button>
+  <button>Não compartilhe dados pessoais</button>
+  <button>Use uma linguagem clara e respeitosa</button>
+  <button>Evite spam e mensagens repetidas</button>
+  <button>Postagens devem ter relação com o tema</button>
+  <button>Críticas devem ser construtivas</button>
+  <button>Respeite os professores e moderadores</button>
+  <button>Denuncie comportamentos impróprios</button>
+  <button>Não compartilhe conteúdo impróprio</button>
+  <button>Verifique as informações antes de postar</button>
+  <button>Não promova produtos ou serviços</button>
+  <button>Participe de forma colaborativa</button>
+  <button>Evite CAPS LOCK excessivo</button>
+  <button>Use fontes confiáveis nos debates</button>
+  <button>Seja gentil com novatos</button>
+</div>
 
-    <div class="contact-links">
-      <a href="mailto:colegioestadualcivicomilitaryvonepimentel@email.com">
-        colegioestadualcivicomilitaryvonepimentel@email.com
-      </a>
-      <a href="tel:+5511999998888">(11) 99999-8888</a>
-    </div>
-  </div>
-
-  <!-- Parte 3: Informações adicionais -->
-  <div class="section">
-    <h2>Informações Sobre a Escola</h2>
-    <p>O Colégio Cívico Militar Yvone Pimentel foi fundado em 1969. Antigamente era uma casa de reeducação para meninas infratoras. Atualmente é dirigido por Mayra e Cidinha.</p>
-  </div>
-
-  <div class="section">
-    <h2>Profissionais Pedagógicos</h2>
-    <p>Contamos com pedagogos, monitores, faxineiros, militares e professores de ótima qualidade.</p>
-  </div>
-
-  <div class="section">
-    <h2>Ensinos Oferecidos</h2>
-    <ul>
-      <li>Ensino Fundamental</li>
-      <li>Ensino Médio Regular e Técnico</li>
-    </ul>
-  </div>
-
-  <div class="section">
-    <h2>Estrutura</h2>
-    <p>Excelente estrutura com ótima qualidade.</p>
-  </div>
-
-  <center><b><p class="suporte2">Continua perdido?</p></b>
-  <a href="suporte.html"><button class="suporte">OBTENHA SUPORTE</button></a></center>
+  </main>
 
    <script>
-
-    //Código do Menu lateral
+ //Código do Menu lateral
   function openMenuLateral() {
     document.getElementById("menuLateral").style.width = "250px";
     document.getElementById("overlay").classList.add("show");
@@ -286,8 +246,7 @@
     document.getElementById("menuLateral").style.width = "0";
     document.getElementById("overlay").classList.remove("show");
   }
-</script>
+ </script>
 
 </body>
 </html>
-

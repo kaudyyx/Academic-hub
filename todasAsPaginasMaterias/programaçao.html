@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Academic-HUB - Programação</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+     <link href="https://fonts.googleapis.com/css2?family=Jaro:opsz@6..72&display=swap" rel="stylesheet">
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+
+:root {
+    --primary-gradient: linear-gradient(to right, #4a007c, #b300ff); /* Dark purple to light purple */
+    --text-color-light: #ffffff;
+    --text-color-dark: #333;
+    --card-background: #ffffff;
+    --border-color: #ddd;
+    --input-background: #f0f2f5;
+    --username-color: #000;
+    --brown-border-color: #8B4513; /* A warm brown for História */
+    --blue-border-color: #007bff; /* A standard blue for Programação */
+    --maroon-border-color: #800000; /* A dark red/maroon for Língua Portuguesa */
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    background-color: #f0f2f5; /* Light grey background */
+    color: var(--text-color-dark);
+}
+
+.navbar {
+    background: var(--primary-gradient);
+    color: var(--text-color-light);
+    padding: 15px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.navbar .logo {
+    font-weight: 700;
+    font-size: 1.5em;
+}
+
+.navbar .menu-icon {
+    cursor: pointer;
+}
+
+.navbar .menu-icon .bar {
+    width: 25px;
+    height: 3px;
+    background-color: var(--text-color-light);
+    margin: 5px 0;
+    border-radius: 2px;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 20px auto;
+    padding: 0 20px;
+}
+
+.hero-section {
+    position: relative;
+    width: 100%;
+    height: 250px; /* Adjust as needed */
+    overflow: hidden;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.hero-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.hero-title {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    color: var(--text-color-light);
+    font-size: 2.5em;
+    font-weight: 700;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    padding: 5px 10px;
+    border-radius: 5px;
+}
+
+.content-wrapper {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap; /* Allows wrapping on smaller screens */
+}
+
+.recados-box {
+    background-color: var(--card-background);
+    border: 1px solid var(--border-color); /* Default border color */
+    border-radius: 8px;
+    padding: 20px;
+    width: 300px; /* Fixed width for the recados box */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    flex-shrink: 0; /* Prevents it from shrinking */
+}
+
+/* Specific styles for different recados box borders */
+.recados-box.brown-border {
+    border: 3px solid var(--brown-border-color);
+}
+
+.recados-box.blue-border {
+    border: 3px solid var(--blue-border-color);
+}
+
+.recados-box.maroon-border {
+    border: 3px solid var(--maroon-border-color);
+}
+
+
+.recados-box h2 {
+    font-size: 1.2em;
+    color: var(--text-color-dark);
+    margin-bottom: 15px;
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 10px;
+}
+
+.recado-item {
+    margin-bottom: 10px;
+}
+
+.recado-item p {
+    margin: 0;
+    color: var(--text-color-dark);
+}
+
+.main-content {
+    flex-grow: 1; /* Allows it to take remaining space */
+    min-width: 400px; /* Minimum width before wrapping */
+}
+
+.post-input {
+    background-color: var(--card-background);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    padding: 15px;
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.post-input .profile-pic {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-right: 15px;
+    border: 1px solid var(--border-color);
+}
+
+.post-input input {
+    flex-grow: 1;
+    border: 1px solid var(--border-color);
+    border-radius: 20px;
+    padding: 10px 15px;
+    font-size: 1em;
+    background-color: var(--input-background);
+    outline: none;
+}
+
+.post-input input::placeholder {
+    color: #888;
+}
+
+.post-card {
+    background-color: var(--card-background);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    padding: 15px;
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.post-card .profile-pic {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-right: 15px;
+    border: 1px solid var(--border-color);
+}
+
+.post-details {
+    flex-grow: 1;
+}
+
+.post-details .username {
+    font-weight: 700;
+    color: var(--username-color);
+    margin-bottom: 5px;
+    display: block;
+}
+
+.post-details .post-text {
+    margin: 0;
+    color: var(--text-color-dark);
+    line-height: 1.5;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .content-wrapper {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .recados-box {
+        width: 100%; /* Full width on smaller screens */
+        margin-bottom: 20px;
+    }
+
+    .hero-title {
+        font-size: 1.8em;
+        bottom: 10px;
+        left: 10px;
+    }
+
+    .navbar .logo {
+        font-size: 1.2em;
+    }
+}
+
+@media (max-width: 480px) {
+    .container {
+        padding: 0 10px;
+    }
+
+    .hero-section {
+        height: 180px;
+    }
+
+    .hero-title {
+        font-size: 1.5em;
+    }
+
+    .navbar {
+        padding: 10px 15px;
+    }
+}
+
+  header {
+            background: linear-gradient(to right, #8a0fdc, #c6d42a);
+            display: flex;
+            align-items: center;
+            padding: 10px;
+            justify-content: space-between;
+            color: white;
+        }
+        header .icons i {
+            width: 24px;
+            margin: 0 10px;
+            cursor: pointer;
+
+        
+        }
+
+
+        header .icons{
+            margin-right: 80px;
+            margin-left: 20px;
+        }
+
+        .search-bar {
+            flex-grow: 1;
+            margin: 0 20px;
+        }
+        .search-bar input {
+            width: 80%;
+            padding: 5px;
+        }
+
+   /* Botão hambúrguer no canto direito */
+.hamburger-btn {
+  position: absolute;
+  top: 20px;
+  right: 40px;
+  z-index: 1001;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.hamburger-btn .bar {
+  width: 25px;
+  height: 3px;
+  background-color: #272b64;
+  margin: 5px 0;
+  transition: 0.3s;
+}
+
+/* Menu lateral do lado direito */
+.menu-lateral {
+  height: 100%;
+  width: 0;
+  position: fixed;
+  top: 0;
+  right: 0;
+  background-color: #520a81;
+  overflow-x: hidden;
+  transition: 0.5s;
+  padding-top: 60px;
+  z-index: 1000;
+}
+
+.menu-lateral a {
+  padding: 12px 20px;
+  text-decoration: none;
+  font-size: 20px;
+  color: white;
+  display: block;
+  transition: 0.3s;
+}
+
+.menu-lateral a:hover {
+  background-color: #340752;
+}
+
+/* Fundo escurecido */
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.4);
+  display: none;
+  z-index: 999;
+}
+
+.overlay.show {
+  display: block;
+}
+
+.logo{
+
+      font-family: 'Jaro', sans-serif;
+      font-size: 40px;
+      padding-left: 30px;
+
+}
+
+    </style>
+   
+</head>
+<body>
+    <header>
+        <div class="logo">AcademicHub</div>
+        <div class="icons">
+            <i class="fas fa-home" alt="Home" onclick="window.location.href='paginaInicial.html'"></i>  <!-- Redireciona para a tela inicial -->
+            <i class="fas fa-school" alt="Escola"></i>
+        </div>
+        <div class="search-bar">
+            <input type="text" class="Pesquisar" id="searchInput" placeholder="Pesquisar..." oninput="searchPosts()">
+        </div>
+        <div class="icons">
+            <i class="fas fa-comments" alt="Chat"></i>
+            <i class="fas fa-bell" alt="Notificações"></i>
+            <i class="fas fa-user" alt="Perfil" onclick="window.location.href='perfil.html'"></i> <!-- Redireciona para o perfil -->
+        
+        </div>
+
+       <!-- Botão hambúrguer -->
+<button class="hamburger-btn" onclick="openMenuLateral()">
+  <div class="bar"></div>
+  <div class="bar"></div>
+  <div class="bar"></div>
+</button>
+
+<!-- Menu lateral com nova classe -->
+<div class="menu-lateral" id="menuLateral">
+     <a href="javascript:void(0)" onclick="closeMenuLateral()">&times; Fechar</a>
+  <a href="./RedirecionamentoInformacoes.html">Informações</a>
+   <a href="noticias.html">Notícias</a>
+   <a href="desabafoAnonimo.html">Desabafo Anônimo</a>
+    <a href="#creditos">Alunos Destaque 1TRI</a>
+  <a href="#sobrenos">Sobre o Academic Hub</a>
+  <a href="#creditos">Créditos</a>
+</div>
+
+<!-- Fundo escurecido -->
+<div class="overlay" id="overlay" onclick="closeMenuLateral()"></div>
+
+
+
+    </header>
+
+
+    <main class="container">
+        <section class="hero-section">
+            <img src="https://idocode.com.br/wp-content/uploads/2021/08/Linguagens-de-programacao-quais-as-melhores-empresas-usam-.jpg" alt="Programming code on a screen" class="hero-image">
+            <h1 class="hero-title">Programação - 2º Ano B Manha</h1>
+        </section>
+
+        <div class="content-wrapper">
+            <aside class="recados-box blue-border"> <h2>RECADOS</h2>
+                <div class="recado-item">
+                    <p>quiz de recuperação</p>
+                </div>
+                </aside>
+
+            <section class="main-content">
+                <div class="post-input">
+                    <img src="assets/img/profile-pic-1.jpg" alt="User Profile" class="profile-pic">
+                    <input type="text" placeholder="escreva algo para turma">
+                </div>
+
+                <div class="post-card">
+                    <img src="assets/img/profile-pic-2.jpg" alt="Yuri_Jack123 Profile" class="profile-pic">
+                    <div class="post-details">
+                        <span class="username">LUIS HENRIQUE DE PAULA JUSKI</span> <p class="post-text">bom dia alunos!!! prova hoje</p>
+                    </div>
+                </div>
+                </section>
+        </div>
+    </main>
+     <script>
+ //Código do Menu lateral
+  function openMenuLateral() {
+    document.getElementById("menuLateral").style.width = "250px";
+    document.getElementById("overlay").classList.add("show");
+  }
+
+  function closeMenuLateral() {
+    document.getElementById("menuLateral").style.width = "0";
+    document.getElementById("overlay").classList.remove("show");
+  }
+ </script>
+
+</body>
+</html>
