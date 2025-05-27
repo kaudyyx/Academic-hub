@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>WhatsApp Clone Simples</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body, html {
+      height: 100%;
+      font-family: Arial, sans-serif;
+    }
+
+    .container {
+      display: flex;
+      height: 100vh;
+    }
+
+    /* Lista de Chats */
+    .chat-list {
+      width: 30%;
+      background-color: #fff;
+      border-right: 1px solid #ccc;
+      overflow-y: auto;
+    }
+
+    .chat-box {
+      display: flex;
+      align-items: center;
+      padding: 15px;
+      cursor: pointer;
+      border-bottom: 1px solid #eee;
+      transition: background 0.2s;
+    }
+
+    .chat-box:hover {
+      background-color: #f5f5f5;
+    }
+
+    .chat-box img {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-right: 10px;
+    }
+
+    .chat-info {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .chat-name {
+      font-weight: bold;
+      color: #075e54;
+    }
+
+    .chat-status {
+      font-size: 14px;
+      color: #25d366;
+    }
+
+    /* Tela de Conversa */
+    .chat-window {
+      width: 70%;
+      display: flex;
+      flex-direction: column;
+      background-color: #ece5dd;
+    }
+
+    .chat-header {
+      background-color: #075e54;
+      color: white;
+      padding: 15px;
+      font-weight: bold;
+    }
+
+    .messages {
+      flex: 1;
+      padding: 15px;
+      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .message {
+      background-color: #dcf8c6;
+      padding: 10px;
+      border-radius: 8px;
+      align-self: flex-end;
+      max-width: 60%;
+    }
+
+    .message-input {
+      display: flex;
+      padding: 10px;
+      background-color: #fff;
+      border-top: 1px solid #ccc;
+    }
+
+    .message-input input {
+      flex: 1;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 20px;
+      outline: none;
+    }
+
+    .message-input button {
+      margin-left: 10px;
+      padding: 10px 20px;
+      background-color: #075e54;
+      color: white;
+      border: none;
+      border-radius: 20px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <div class="chat-list" id="chatList"></div>
+
+  <div class="chat-window" id="chatWindow">
+    <div class="chat-header" id="chatHeader">Selecione um contato</div>
+    <div class="messages" id="messages"></div>
+    <div class="message-input">
+      <input type="text" id="messageInput" placeholder="Digite sua mensagem..." disabled>
+      <button onclick="sendMessage()" disabled>Enviar</button>
+    </div>
+  </div>
+</div>
+
+<script>
+  const chats = [
+    { nome: 'Lucas', imagem: 'https://randomuser.me/api/portraits/men/1.jpg' },
+    { nome: 'Maria', imagem: 'https://randomuser.me/api/portraits/women/2.jpg' },
+    { nome: 'Pedro', imagem: 'https://randomuser.me/api/portraits/men/3.jpg' },
+    { nome: 'Ana', imagem: 'https://randomuser.me/api/portraits/women/4.jpg' },
+    { nome: 'João', imagem: 'https://randomuser.me/api/portraits/men/5.jpg' }
+  ];
+
+  const chatList = document.getElementById('chatList');
+  const chatHeader = document.getElementById('chatHeader');
+  const messagesDiv = document.getElementById('messages');
+  const input = document.getElementById('messageInput');
+  const sendBtn = document.querySelector('.message-input button');
+
+  let selectedContact = null;
+
+  chats.forEach(chat => {
+    const box = document.createElement('div');
+    box.className = 'chat-box';
+    box.innerHTML = `
+      <img src="${chat.imagem}" alt="Foto de ${chat.nome}">
+      <div class="chat-info">
+        <div class="chat-name">${chat.nome}</div>
+        <div class="chat-status">online</div>
+      </div>
+    `;
+    box.onclick = () => openChat(chat);
+    chatList.appendChild(box);
+  });
+
+  function openChat(chat) {
+    selectedContact = chat;
+    chatHeader.textContent = chat.nome;
+    messagesDiv.innerHTML = '';
+    input.disabled = false;
+    sendBtn.disabled = false;
+    input.focus();
+  }
+
+  function sendMessage() {
+    const text = input.value.trim();
+    if (text === '') return;
+
+    const msg = document.createElement('div');
+    msg.className = 'message';
+    msg.textContent = text;
+    messagesDiv.appendChild(msg);
+    messagesDiv.scrollTop = messagesDiv.scrollHeight;
+
+    input.value = '';
+    input.focus();
+  }
+</script>
+
+</body>
+</html>

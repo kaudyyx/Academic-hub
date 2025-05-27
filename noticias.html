@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AcademicHub - Notícias</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+     <link href="https://fonts.googleapis.com/css2?family=Jaro:opsz@6..72&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+        }
+        .faixa {
+            width: 100%;
+            height: 50px;
+            background: linear-gradient(to right, purple, yellow);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 18px;
+            font-weight: bold;
+        }
+        .container {
+            width: 80%;
+            margin: auto;
+            padding: 20px;
+            background-color: white;
+        }
+        .noticias {
+            display: flex;
+            justify-content: space-between;
+        }
+        .noticia {
+            width: 48%;
+            padding: 10px;
+            border-radius: 5px;
+            background-color: #fff;
+            box-shadow: 0px 0px 5px rgba(0,0,0,0.1);
+        }
+        .noticia img {
+            width: 100%;
+            border-radius: 5px;
+        }
+        .carregar-mais {
+            text-align: center;
+            margin-top: 20px;
+        }
+        .carregar-mais a {
+            text-decoration: none;
+            color: blue;
+            font-weight: bold;
+        }
+
+           header {
+            background: linear-gradient(to right, #8a0fdc, #c6d42a);
+            display: flex;
+            align-items: center;
+            padding: 10px;
+            justify-content: space-between;
+            color: white;
+        }
+        header .icons i {
+            width: 24px;
+            margin: 0 10px;
+            cursor: pointer;
+
+        
+        }
+
+
+        header .icons{
+            margin-right: 80px;
+            margin-left: 20px;
+        }
+
+        .search-bar {
+            flex-grow: 1;
+            margin: 0 20px;
+        }
+        .search-bar input {
+            width: 80%;
+            padding: 5px;
+        }
+
+   /* Botão hambúrguer no canto direito */
+.hamburger-btn {
+  position: absolute;
+  top: 20px;
+  right: 40px;
+  z-index: 1001;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.hamburger-btn .bar {
+  width: 25px;
+  height: 3px;
+  background-color: #272b64;
+  margin: 5px 0;
+  transition: 0.3s;
+}
+
+/* Menu lateral do lado direito */
+.menu-lateral {
+  height: 100%;
+  width: 0;
+  position: fixed;
+  top: 0;
+  right: 0;
+  background-color: #520a81;
+  overflow-x: hidden;
+  transition: 0.5s;
+  padding-top: 60px;
+  z-index: 1000;
+}
+
+.menu-lateral a {
+  padding: 12px 20px;
+  text-decoration: none;
+  font-size: 20px;
+  color: white;
+  display: block;
+  transition: 0.3s;
+}
+
+.menu-lateral a:hover {
+  background-color: #340752;
+}
+
+/* Fundo escurecido */
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.4);
+  display: none;
+  z-index: 999;
+}
+
+.overlay.show {
+  display: block;
+}
+
+.logo{
+
+      font-family: 'Jaro', sans-serif;
+      font-size: 40px;
+      padding-left: 30px;
+
+}
+
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">AcademicHub</div>
+        <div class="icons">
+            <i class="fas fa-home" alt="Home" onclick="window.location.href='paginaInicial.html'"></i>  <!-- Redireciona para a tela inicial -->
+            <i class="fas fa-school" alt="Escola"></i>
+        </div>
+        <div class="search-bar">
+            <input type="text" class="Pesquisar" id="searchInput" placeholder="Pesquisar..." oninput="searchPosts()">
+        </div>
+        <div class="icons">
+            <i class="fas fa-comments" alt="Chat"></i>
+            <i class="fas fa-bell" alt="Notificações"></i>
+            <i class="fas fa-user" alt="Perfil" onclick="window.location.href='perfil.html'"></i> <!-- Redireciona para o perfil -->
+        
+        </div>
+
+       <!-- Botão hambúrguer -->
+<button class="hamburger-btn" onclick="openMenuLateral()">
+  <div class="bar"></div>
+  <div class="bar"></div>
+  <div class="bar"></div>
+</button>
+
+<!-- Menu lateral com nova classe -->
+<div class="menu-lateral" id="menuLateral">
+     <a href="javascript:void(0)" onclick="closeMenuLateral()">&times; Fechar</a>
+  <a href="./RedirecionamentoInformacoes.html">Informações</a>
+   <a href="noticias.html">Notícias</a>
+   <a href="desabafoAnonimo.html">Desabafo Anônimo</a>
+    <a href="#creditos">Alunos Destaque 1TRI</a>
+  <a href="#sobrenos">Sobre o Academic Hub</a>
+  <a href="#creditos">Créditos</a>
+</div>
+
+<!-- Fundo escurecido -->
+<div class="overlay" id="overlay" onclick="closeMenuLateral()"></div>
+
+
+
+    </header>
+
+
+    <div class="container">
+        <h1>Notícias</h1>
+        <div class="noticias">
+            <div class="noticia">
+                <h2>TCE determina devolução de R$ 1,2 milhão desviado de obras de escola em Curitiba</h2>
+                <p>Empresa de engenharia e quatro pessoas foram condenadas a devolver conjuntamente o dinheiro.</p>
+                <img src="https://s2-g1.glbimg.com/JU6UNLiC9XCSH3iZfhfwc9WwOpE=/0x0:640x356/984x0/smart/filters:strip_icc()/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2018/N/p/LZmC6PSauBJV3sbvElqg/00325519.jpg" alt="Colégio Estadual Yvone Pimentel">
+                <p><strong>Por G1 PR — Curitiba</strong> | 26/03/2018 12h05</p>
+            </div>
+            <div class="noticia">
+                <h2>Notas da CMC: 11 temas que repercutiram em Curitiba neste 17 de abril</h2>
+                <p>Novos itens no SUS, votações adiadas, dissolução de bloco parlamentar e mais notas da sessão plenária da Câmara de Curitiba.</p>
+                <img src="https://www.curitiba.pr.leg.br/informacao/noticias/imagens-de-noticias/Visitaestudantes1.jpg" alt="Câmara Municipal">
+                <p><strong>Por Fernanda Foggiato, Josette Norris Garcia e Nestor Tissot</strong> | 17/04/2018 11h15</p>
+            </div>
+        </div>
+        <div class="carregar-mais">
+        </div>
+    </div>
+
+     <script>
+ //Código do Menu lateral
+  function openMenuLateral() {
+    document.getElementById("menuLateral").style.width = "250px";
+    document.getElementById("overlay").classList.add("show");
+  }
+
+  function closeMenuLateral() {
+    document.getElementById("menuLateral").style.width = "0";
+    document.getElementById("overlay").classList.remove("show");
+  }
+ </script>
+
+</body>

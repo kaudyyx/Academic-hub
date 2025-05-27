@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="description" content="Site da escola">
+  <title>Colégio Cívico Militar Yvone Pimentel</title>
+  <style>
+     
+/* Código da Parte Principal da Página */
+    .centered {
+      text-align: center;
+      padding: 50px;
+      padding-bottom: 20px;
+    }
+
+    .centered h1 {
+      font-size: 40px;
+     
+    }
+
+    .section {
+      width: 800px;
+      background-color: white;
+      margin: 20px auto;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 0 15px rgba(0,0,0,0.1);
+    }
+
+    h2 {
+      text-align: center;
+      color: #333;
+    }
+
+
+    .contact-links {
+      text-align: center;
+    }
+
+    .contact-links a {
+      display: block;
+      margin: 5px;
+      color: #131010;
+      text-decoration: none;
+    }
+
+    .contact-links a:hover {
+      text-decoration: underline;
+      color: blueviolet;
+    }
+
+
+      body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #ffffff;
+        }
+        header {
+            background: linear-gradient(to right, #8a0fdc, #c6d42a);
+            display: flex;
+            align-items: center;
+            padding: 10px;
+            justify-content: space-between;
+            color: white;
+        }
+        header .icons img {
+            width: 24px;
+            margin: 0 10px;
+            cursor: pointer;
+
+        
+        }
+
+
+        header .icons{
+            margin-right: 80px;
+        }
+
+        .search-bar {
+            flex-grow: 1;
+            margin: 0 20px;
+        }
+        .search-bar input {
+            width: 80%;
+            padding: 5px;
+        }
+        .sidebar {
+            width: 200px;
+            background: #e4e0e0;
+            padding: 15px;
+            position: fixed;
+            height: 100%;
+        }
+
+          /* Botão hambúrguer no canto direito */
+.hamburger-btn {
+  position: absolute;
+  top: 9px;
+  right: 40px;
+  z-index: 1001;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.hamburger-btn .bar {
+  width: 25px;
+  height: 3px;
+  background-color: #272b64;
+  margin: 5px 0;
+  transition: 0.3s;
+}
+
+/* Menu lateral do lado direito */
+.menu-lateral {
+  height: 100%;
+  width: 0;
+  position: fixed;
+  top: 0;
+  right: 0;
+  background-color: #520a81;
+  overflow-x: hidden;
+  transition: 0.5s;
+  padding-top: 60px;
+  z-index: 1000;
+}
+
+.menu-lateral a {
+  padding: 12px 20px;
+  text-decoration: none;
+  font-size: 20px;
+  color: white;
+  display: block;
+  transition: 0.3s;
+}
+
+.menu-lateral a:hover {
+  background-color: #340752;
+}
+
+/* Fundo escurecido */
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.4);
+  display: none;
+  z-index: 999;
+}
+
+.overlay.show {
+  display: block;
+}
+
+  </style>
+</head>
+
+<body>
+
+ <header>
+        <div class="logo">AcademicHub</div>
+        <div class="icons">
+            <img src="home.png" alt="Home" onclick="window.location.href='paginaInicial.html'"> <!-- Redireciona para a tela inicial -->
+            <img src="escola.png" alt="Escola">
+        </div>
+         
+        <div class="search-bar">
+            <input type="text" class="Pesquisar" id="searchInput" placeholder="Pesquisar..." oninput="searchPosts()">
+        </div>
+        <div class="icons">
+            <img src="chat.png" alt="Chat">
+            <img src="sino.png" alt="Notificações">
+            <img src="perfil.png" alt="Perfil" onclick="window.location.href='perfil.html'"> <!-- Redireciona para o perfil -->
+        
+        </div>
+
+       <!-- Botão hambúrguer -->
+<button class="hamburger-btn" onclick="openMenuLateral()">
+  <div class="bar"></div>
+  <div class="bar"></div>
+  <div class="bar"></div>
+</button>
+
+<!-- Menu lateral com nova classe -->
+<div class="menu-lateral" id="menuLateral">
+  <a href="javascript:void(0)" onclick="closeMenuLateral()">&times; Fechar</a>
+  <a href="./RedirecionamentoInformacoes.html">Informações</a>
+   <a href="#creditos">Notícias</a>
+    <a href="#creditos">Alunos Destaque 1TRI</a>
+  <a href="#sobrenos">Sobre o Academic Hub</a>
+  <a href="#creditos">Créditos</a>
+</div>
+
+<!-- Fundo escurecido -->
+<div class="overlay" id="overlay" onclick="closeMenuLateral()"></div>
+
+
+    </header>
+    
+  <!-- Parte 1: Boas-vindas -->
+  <div class="centered">
+    <h1>Bem-vindo ao Site da Escola</h1>
+    <p>Aqui você pode se cadastrar, acessar o login, entrar em contato conosco e muito mais.</p>
+  </div>
+
+  <!-- Parte 2: Contato -->
+  <div class="section">
+    <h2>Fale Conosco</h2>
+    <p>Se você precisar de mais informações, entre em contato conosco:</p>
+
+    <div class="contact-links">
+      <a href="mailto:colegioestadualcivicomilitaryvonepimentel@email.com">
+        colegioestadualcivicomilitaryvonepimentel@email.com
+      </a>
+      <a href="tel:+5511999998888">(11) 99999-8888</a>
+    </div>
+  </div>
+
+  <!-- Parte 3: Informações adicionais -->
+  <div class="section">
+    <h2>Informações Sobre a Escola</h2>
+    <p>O Colégio Cívico Militar Yvone Pimentel foi fundado em 1969. Antigamente era uma casa de reeducação para meninas infratoras. Atualmente é dirigido por Mayra e Cidinha.</p>
+  </div>
+
+  <div class="section">
+    <h2>Profissionais Pedagógicos</h2>
+    <p>Contamos com pedagogos, monitores, faxineiros, militares e professores de ótima qualidade.</p>
+  </div>
+
+  <div class="section">
+    <h2>Ensinos Oferecidos</h2>
+    <ul>
+      <li>Ensino Fundamental</li>
+      <li>Ensino Médio Regular e Técnico</li>
+    </ul>
+  </div>
+
+  <div class="section">
+    <h2>Estrutura</h2>
+    <p>Excelente estrutura com ótima qualidade.</p>
+  </div>
+
+   <script>
+
+    //Código do Menu lateral
+  function openMenuLateral() {
+    document.getElementById("menuLateral").style.width = "250px";
+    document.getElementById("overlay").classList.add("show");
+  }
+
+  function closeMenuLateral() {
+    document.getElementById("menuLateral").style.width = "0";
+    document.getElementById("overlay").classList.remove("show");
+  }
+</script>
+
+</body>
+</html>
+

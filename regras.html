@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Regras da Comunidade</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+     <link href="https://fonts.googleapis.com/css2?family=Jaro:opsz@6..72&display=swap" rel="stylesheet">
+</head>
+<style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: #fefcf8;
+    }
+ header {
+            background: linear-gradient(to right, #8a0fdc, #c6d42a);
+            display: flex;
+            align-items: center;
+            padding: 10px;
+            justify-content: space-between;
+            color: white;
+        }
+        header .icons i {
+            width: 24px;
+            margin: 0 10px;
+            cursor: pointer;
+
+        
+        }
+
+
+        header .icons{
+            margin-right: 80px;
+            margin-left: 20px;
+        }
+
+        .search-bar {
+            flex-grow: 1;
+            margin: 0 20px;
+        }
+        .search-bar input {
+            width: 80%;
+            padding: 5px;
+        }
+
+   /* Botão hambúrguer no canto direito */
+.hamburger-btn {
+  position: absolute;
+  top: 20px;
+  right: 40px;
+  z-index: 1001;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.hamburger-btn .bar {
+  width: 25px;
+  height: 3px;
+  background-color: #272b64;
+  margin: 5px 0;
+  transition: 0.3s;
+}
+
+/* Menu lateral do lado direito */
+.menu-lateral {
+  height: 100%;
+  width: 0;
+  position: fixed;
+  top: 0;
+  right: 0;
+  background-color: #520a81;
+  overflow-x: hidden;
+  transition: 0.5s;
+  padding-top: 60px;
+  z-index: 1000;
+}
+
+.menu-lateral a {
+  padding: 12px 20px;
+  text-decoration: none;
+  font-size: 20px;
+  color: white;
+  display: block;
+  transition: 0.3s;
+}
+
+.menu-lateral a:hover {
+  background-color: #340752;
+}
+
+/* Fundo escurecido */
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.4);
+  display: none;
+  z-index: 999;
+}
+
+.overlay.show {
+  display: block;
+}
+
+
+
+    .menu {
+      font-size: 2em;
+      cursor: pointer;
+    }
+
+    main {
+      text-align: center;
+      padding: 40px 20px;
+    }
+
+    h1 {
+      font-size: 3em;
+      font-family: 'Arial Black', sans-serif;
+      margin-bottom: 50px;
+      padding: 10px;
+    }
+
+    .button-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 15px;
+      max-width: 700px;
+      margin: 0 auto;
+    }
+
+    .button-grid button {
+        background-color: #4ea5ff;
+        color: black;
+        font-weight: bold;
+        padding: 15px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 1em;
+        transition: background 0.3s, transform 0.3s;
+}
+
+    .button-grid button:hover {
+        background-color: #3391ff;
+        transform: scale(1.05); 
+}
+
+    @media (max-width: 600px) {
+      .button-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .logo{
+
+      font-family: 'Jaro', sans-serif;
+      font-size: 40px;
+      padding-left: 30px;
+
+}
+
+</style>
+<body>
+     <header>
+        <div class="logo">AcademicHub</div>
+        <div class="icons">
+            <i class="fas fa-home" alt="Home" onclick="window.location.href='paginaInicial.html'"></i>  <!-- Redireciona para a tela inicial -->
+            <i class="fas fa-school" alt="Escola"></i>
+        </div>
+        <div class="search-bar">
+            <input type="text" class="Pesquisar" id="searchInput" placeholder="Pesquisar..." oninput="searchPosts()">
+        </div>
+        <div class="icons">
+            <i class="fas fa-comments" alt="Chat"></i>
+            <i class="fas fa-bell" alt="Notificações"></i>
+            <i class="fas fa-user" alt="Perfil" onclick="window.location.href='perfil.html'"></i> <!-- Redireciona para o perfil -->
+        
+        </div>
+
+       <!-- Botão hambúrguer -->
+<button class="hamburger-btn" onclick="openMenuLateral()">
+  <div class="bar"></div>
+  <div class="bar"></div>
+  <div class="bar"></div>
+</button>
+
+<!-- Menu lateral com nova classe -->
+<div class="menu-lateral" id="menuLateral">
+     <a href="javascript:void(0)" onclick="closeMenuLateral()">&times; Fechar</a>
+  <a href="./RedirecionamentoInformacoes.html">Informações</a>
+   <a href="noticias.html">Notícias</a>
+   <a href="desabafoAnonimo.html">Desabafo Anônimo</a>
+    <a href="#creditos">Alunos Destaque 1TRI</a>
+  <a href="#sobrenos">Sobre o Academic Hub</a>
+  <a href="#creditos">Créditos</a>
+</div>
+
+<!-- Fundo escurecido -->
+<div class="overlay" id="overlay" onclick="closeMenuLateral()"></div>
+
+
+
+    </header>
+
+
+  <main>
+    <h1>REGRAS DA <br> COMUNIDADE</h1>
+    
+
+  <div class="button-grid">
+  <button>Respeite todos os membros</button>
+  <button>Evite linguagem ofensiva</button>
+  <button>Não publique fake news</button>
+  <button>Proibido bullying ou discriminação</button>
+  <button>Não compartilhe dados pessoais</button>
+  <button>Use uma linguagem clara e respeitosa</button>
+  <button>Evite spam e mensagens repetidas</button>
+  <button>Postagens devem ter relação com o tema</button>
+  <button>Críticas devem ser construtivas</button>
+  <button>Respeite os professores e moderadores</button>
+  <button>Denuncie comportamentos impróprios</button>
+  <button>Não compartilhe conteúdo impróprio</button>
+  <button>Verifique as informações antes de postar</button>
+  <button>Não promova produtos ou serviços</button>
+  <button>Participe de forma colaborativa</button>
+  <button>Evite CAPS LOCK excessivo</button>
+  <button>Use fontes confiáveis nos debates</button>
+  <button>Seja gentil com novatos</button>
+</div>
+
+  </main>
+
+   <script>
+ //Código do Menu lateral
+  function openMenuLateral() {
+    document.getElementById("menuLateral").style.width = "250px";
+    document.getElementById("overlay").classList.add("show");
+  }
+
+  function closeMenuLateral() {
+    document.getElementById("menuLateral").style.width = "0";
+    document.getElementById("overlay").classList.remove("show");
+  }
+ </script>
+
+</body>
+</html>
